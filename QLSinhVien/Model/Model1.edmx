@@ -1,0 +1,949 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLSinhVienModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DiemSV">
+          <Key>
+            <PropertyRef Name="MaMon" />
+            <PropertyRef Name="MaSV" />
+          </Key>
+          <Property Name="MaMon" Type="int" Nullable="false" />
+          <Property Name="MaSV" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="DiemTK" Type="float" />
+          <Property Name="DiemGK" Type="float" />
+          <Property Name="DiemCK" Type="float" />
+          <Property Name="DiemTB" Type="float" />
+        </EntityType>
+        <EntityType Name="GiangVien">
+          <Key>
+            <PropertyRef Name="MaGV" />
+          </Key>
+          <Property Name="MaGV" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="TenGV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SDT" Type="char" MaxLength="10" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LopHocPhan">
+          <Key>
+            <PropertyRef Name="MaLopHocPhan" />
+          </Key>
+          <Property Name="MaLopHocPhan" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="TenLopHoc" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="MaMon" Type="int" Nullable="false" />
+          <Property Name="PhongHoc" Type="varchar" MaxLength="10" />
+          <Property Name="HocKy" Type="int" Nullable="false" />
+          <Property Name="MaGV" Type="char" MaxLength="10" />
+          <Property Name="Thu" Type="int" Nullable="false" />
+          <Property Name="NgayBD" Type="datetime" Nullable="false" />
+          <Property Name="NgayKT" Type="datetime" Nullable="false" />
+          <Property Name="TietBD" Type="int" Nullable="false" />
+          <Property Name="TietKT" Type="int" Nullable="false" />
+          <Property Name="LoaiLop" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MonHoc">
+          <Key>
+            <PropertyRef Name="MaMon" />
+          </Key>
+          <Property Name="MaMon" Type="int" Nullable="false" />
+          <Property Name="TenMon" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TC" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SinhVien">
+          <Key>
+            <PropertyRef Name="MaSV" />
+          </Key>
+          <Property Name="MaSV" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="HoTenSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lop" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="NgaySinh" Type="datetime" Nullable="false" />
+          <Property Name="SDT" Type="char" MaxLength="10" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NgayNhapHoc" Type="datetime" Nullable="false" />
+          <Property Name="GioiTinh" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SV_LopHocPhan">
+          <Key>
+            <PropertyRef Name="MaSv" />
+            <PropertyRef Name="MaLopHocPhan" />
+          </Key>
+          <Property Name="MaSv" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="MaLopHocPhan" Type="char" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="TaiKhoan" />
+          </Key>
+          <Property Name="TaiKhoan" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="MatKhau" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QLSinhVien.dbo.vDiem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vDiem">
+          <Key>
+            <PropertyRef Name="MaSV" />
+            <PropertyRef Name="MaMon" />
+          </Key>
+          <Property Name="MaSV" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="HoTenSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaMon" Type="int" Nullable="false" />
+          <Property Name="TenMon" Type="nvarchar" MaxLength="50" />
+          <Property Name="DiemTK" Type="float" />
+          <Property Name="DiemGK" Type="float" />
+          <Property Name="DiemCK" Type="float" />
+          <Property Name="DiemTB" Type="float" />
+          <Property Name="DiemHe4" Type="float" />
+          <Property Name="DiemChuHe4" Type="char" MaxLength="1" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QLSinhVien.dbo.vDiemTheoMon' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vDiemTheoMon">
+          <Key>
+            <PropertyRef Name="MaMon" />
+            <PropertyRef Name="TenMon" />
+          </Key>
+          <Property Name="MaMon" Type="int" Nullable="false" />
+          <Property Name="TenMon" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DiemTK" Type="float" />
+          <Property Name="DiemGK" Type="float" />
+          <Property Name="DiemCK" Type="float" />
+          <Property Name="DiemTB" Type="float" />
+          <Property Name="DiemHe4" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QLSinhVien.dbo.vDiemTheoSV' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vDiemTheoSV">
+          <Key>
+            <PropertyRef Name="MaSV" />
+            <PropertyRef Name="HoTenSV" />
+          </Key>
+          <Property Name="MaSV" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="HoTenSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DiemTK" Type="float" />
+          <Property Name="DiemGK" Type="float" />
+          <Property Name="DiemCK" Type="float" />
+          <Property Name="DiemTB" Type="float" />
+          <Property Name="DiemHe4" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QLSinhVien.dbo.vLopHocPhan' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vLopHocPhan">
+          <Key>
+            <PropertyRef Name="MaLopHocPhan" />
+            <PropertyRef Name="TenLopHoc" />
+            <PropertyRef Name="TenMon" />
+            <PropertyRef Name="PhongHoc" />
+            <PropertyRef Name="HocKy" />
+            <PropertyRef Name="TenGV" />
+            <PropertyRef Name="Thu" />
+            <PropertyRef Name="NgayBD" />
+            <PropertyRef Name="NgayKT" />
+            <PropertyRef Name="TietBD" />
+            <PropertyRef Name="TietKT" />
+            <PropertyRef Name="LoaiLop" />
+          </Key>
+          <Property Name="MaLopHocPhan" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="TenLopHoc" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="TenMon" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhongHoc" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="HocKy" Type="int" Nullable="false" />
+          <Property Name="TenGV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Thu" Type="int" Nullable="false" />
+          <Property Name="NgayBD" Type="datetime" Nullable="false" />
+          <Property Name="NgayKT" Type="datetime" Nullable="false" />
+          <Property Name="TietBD" Type="int" Nullable="false" />
+          <Property Name="TietKT" Type="int" Nullable="false" />
+          <Property Name="LoaiLop" Type="nvarchar" MaxLength="9" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QLSinhVien.dbo.vSinhVien' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vSinhVien">
+          <Key>
+            <PropertyRef Name="MaSV" />
+            <PropertyRef Name="HoTenSV" />
+            <PropertyRef Name="Lop" />
+            <PropertyRef Name="NgaySinh" />
+            <PropertyRef Name="DiaChi" />
+            <PropertyRef Name="NgayNhapHoc" />
+            <PropertyRef Name="GioiTinh" />
+          </Key>
+          <Property Name="MaSV" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="HoTenSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lop" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="NgaySinh" Type="datetime" Nullable="false" />
+          <Property Name="SDT" Type="char" MaxLength="10" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NgayNhapHoc" Type="datetime" Nullable="false" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DiemSV_MonHoc">
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="1" />
+          <End Role="DiemSV" Type="Self.DiemSV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="MaMon" />
+            </Principal>
+            <Dependent Role="DiemSV">
+              <PropertyRef Name="MaMon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiemSV_SinhVien">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="1" />
+          <End Role="DiemSV" Type="Self.DiemSV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="MaSV" />
+            </Principal>
+            <Dependent Role="DiemSV">
+              <PropertyRef Name="MaSV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LopHocPhan_GiangVien">
+          <End Role="GiangVien" Type="Self.GiangVien" Multiplicity="0..1" />
+          <End Role="LopHocPhan" Type="Self.LopHocPhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GiangVien">
+              <PropertyRef Name="MaGV" />
+            </Principal>
+            <Dependent Role="LopHocPhan">
+              <PropertyRef Name="MaGV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LopHocPhan_MonHoc1">
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="1" />
+          <End Role="LopHocPhan" Type="Self.LopHocPhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="MaMon" />
+            </Principal>
+            <Dependent Role="LopHocPhan">
+              <PropertyRef Name="MaMon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SV_LopHocPhan_LopHocPhan">
+          <End Role="LopHocPhan" Type="Self.LopHocPhan" Multiplicity="1" />
+          <End Role="SV_LopHocPhan" Type="Self.SV_LopHocPhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LopHocPhan">
+              <PropertyRef Name="MaLopHocPhan" />
+            </Principal>
+            <Dependent Role="SV_LopHocPhan">
+              <PropertyRef Name="MaLopHocPhan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SV_LopHocPhan_SinhVien">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="1" />
+          <End Role="SV_LopHocPhan" Type="Self.SV_LopHocPhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="MaSV" />
+            </Principal>
+            <Dependent Role="SV_LopHocPhan">
+              <PropertyRef Name="MaSv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="p_DauRot" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="p_findGiangVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="find" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="p_findSinhVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="find" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="p_findTheoKhoa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="khoa" Type="char" Mode="In" />
+        </Function>
+        <Function Name="p_ktGVTrungLich" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="thu" Type="int" Mode="In" />
+          <Parameter Name="ngayBD" Type="datetime" Mode="In" />
+          <Parameter Name="ngayKT" Type="datetime" Mode="In" />
+          <Parameter Name="tietBD" Type="int" Mode="In" />
+          <Parameter Name="tietKT" Type="int" Mode="In" />
+          <Parameter Name="MaGV" Type="char" Mode="In" />
+        </Function>
+        <Function Name="p_ktPHTrungLich" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="thu" Type="int" Mode="In" />
+          <Parameter Name="ngayBD" Type="datetime" Mode="In" />
+          <Parameter Name="ngayKT" Type="datetime" Mode="In" />
+          <Parameter Name="tietBD" Type="int" Mode="In" />
+          <Parameter Name="tietKT" Type="int" Mode="In" />
+          <Parameter Name="Phong" Type="char" Mode="In" />
+        </Function>
+        <Function Name="p_svLopHocPhan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaLopHP" Type="char" Mode="In" />
+        </Function>
+        <EntityContainer Name="QLSinhVienModelStoreContainer">
+          <EntitySet Name="DiemSV" EntityType="Self.DiemSV" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GiangVien" EntityType="Self.GiangVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LopHocPhan" EntityType="Self.LopHocPhan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MonHoc" EntityType="Self.MonHoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SinhVien" EntityType="Self.SinhVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SV_LopHocPhan" EntityType="Self.SV_LopHocPhan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vDiem" EntityType="Self.vDiem" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vDiem].[MaSV] AS [MaSV], 
+    [vDiem].[HoTenSV] AS [HoTenSV], 
+    [vDiem].[MaMon] AS [MaMon], 
+    [vDiem].[TenMon] AS [TenMon], 
+    [vDiem].[DiemTK] AS [DiemTK], 
+    [vDiem].[DiemGK] AS [DiemGK], 
+    [vDiem].[DiemCK] AS [DiemCK], 
+    [vDiem].[DiemTB] AS [DiemTB], 
+    [vDiem].[DiemHe4] AS [DiemHe4], 
+    [vDiem].[DiemChuHe4] AS [DiemChuHe4]
+    FROM [dbo].[vDiem] AS [vDiem]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vDiemTheoMon" EntityType="Self.vDiemTheoMon" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vDiemTheoMon].[MaMon] AS [MaMon], 
+    [vDiemTheoMon].[TenMon] AS [TenMon], 
+    [vDiemTheoMon].[DiemTK] AS [DiemTK], 
+    [vDiemTheoMon].[DiemGK] AS [DiemGK], 
+    [vDiemTheoMon].[DiemCK] AS [DiemCK], 
+    [vDiemTheoMon].[DiemTB] AS [DiemTB], 
+    [vDiemTheoMon].[DiemHe4] AS [DiemHe4]
+    FROM [dbo].[vDiemTheoMon] AS [vDiemTheoMon]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vDiemTheoSV" EntityType="Self.vDiemTheoSV" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vDiemTheoSV].[MaSV] AS [MaSV], 
+    [vDiemTheoSV].[HoTenSV] AS [HoTenSV], 
+    [vDiemTheoSV].[DiemTK] AS [DiemTK], 
+    [vDiemTheoSV].[DiemGK] AS [DiemGK], 
+    [vDiemTheoSV].[DiemCK] AS [DiemCK], 
+    [vDiemTheoSV].[DiemTB] AS [DiemTB], 
+    [vDiemTheoSV].[DiemHe4] AS [DiemHe4]
+    FROM [dbo].[vDiemTheoSV] AS [vDiemTheoSV]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vLopHocPhan" EntityType="Self.vLopHocPhan" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vLopHocPhan].[MaLopHocPhan] AS [MaLopHocPhan], 
+    [vLopHocPhan].[TenLopHoc] AS [TenLopHoc], 
+    [vLopHocPhan].[TenMon] AS [TenMon], 
+    [vLopHocPhan].[PhongHoc] AS [PhongHoc], 
+    [vLopHocPhan].[HocKy] AS [HocKy], 
+    [vLopHocPhan].[TenGV] AS [TenGV], 
+    [vLopHocPhan].[Thu] AS [Thu], 
+    [vLopHocPhan].[NgayBD] AS [NgayBD], 
+    [vLopHocPhan].[NgayKT] AS [NgayKT], 
+    [vLopHocPhan].[TietBD] AS [TietBD], 
+    [vLopHocPhan].[TietKT] AS [TietKT], 
+    [vLopHocPhan].[LoaiLop] AS [LoaiLop]
+    FROM [dbo].[vLopHocPhan] AS [vLopHocPhan]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vSinhVien" EntityType="Self.vSinhVien" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vSinhVien].[MaSV] AS [MaSV], 
+    [vSinhVien].[HoTenSV] AS [HoTenSV], 
+    [vSinhVien].[Lop] AS [Lop], 
+    [vSinhVien].[NgaySinh] AS [NgaySinh], 
+    [vSinhVien].[SDT] AS [SDT], 
+    [vSinhVien].[DiaChi] AS [DiaChi], 
+    [vSinhVien].[NgayNhapHoc] AS [NgayNhapHoc], 
+    [vSinhVien].[GioiTinh] AS [GioiTinh]
+    FROM [dbo].[vSinhVien] AS [vSinhVien]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_DiemSV_MonHoc" Association="Self.FK_DiemSV_MonHoc">
+            <End Role="MonHoc" EntitySet="MonHoc" />
+            <End Role="DiemSV" EntitySet="DiemSV" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiemSV_SinhVien" Association="Self.FK_DiemSV_SinhVien">
+            <End Role="SinhVien" EntitySet="SinhVien" />
+            <End Role="DiemSV" EntitySet="DiemSV" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LopHocPhan_GiangVien" Association="Self.FK_LopHocPhan_GiangVien">
+            <End Role="GiangVien" EntitySet="GiangVien" />
+            <End Role="LopHocPhan" EntitySet="LopHocPhan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LopHocPhan_MonHoc1" Association="Self.FK_LopHocPhan_MonHoc1">
+            <End Role="MonHoc" EntitySet="MonHoc" />
+            <End Role="LopHocPhan" EntitySet="LopHocPhan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SV_LopHocPhan_LopHocPhan" Association="Self.FK_SV_LopHocPhan_LopHocPhan">
+            <End Role="LopHocPhan" EntitySet="LopHocPhan" />
+            <End Role="SV_LopHocPhan" EntitySet="SV_LopHocPhan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SV_LopHocPhan_SinhVien" Association="Self.FK_SV_LopHocPhan_SinhVien">
+            <End Role="SinhVien" EntitySet="SinhVien" />
+            <End Role="SV_LopHocPhan" EntitySet="SV_LopHocPhan" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLSinhVienModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DiemSV">
+          <Key>
+            <PropertyRef Name="MaMon" />
+            <PropertyRef Name="MaSV" />
+          </Key>
+          <Property Name="MaMon" Type="Int32" Nullable="false" />
+          <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DiemTK" Type="Double" />
+          <Property Name="DiemGK" Type="Double" />
+          <Property Name="DiemCK" Type="Double" />
+          <Property Name="DiemTB" Type="Double" />
+          <NavigationProperty Name="MonHoc" Relationship="Self.FK_DiemSV_MonHoc" FromRole="DiemSV" ToRole="MonHoc" />
+          <NavigationProperty Name="SinhVien" Relationship="Self.FK_DiemSV_SinhVien" FromRole="DiemSV" ToRole="SinhVien" />
+        </EntityType>
+        <EntityType Name="GiangVien">
+          <Key>
+            <PropertyRef Name="MaGV" />
+          </Key>
+          <Property Name="MaGV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenGV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="LopHocPhans" Relationship="Self.FK_LopHocPhan_GiangVien" FromRole="GiangVien" ToRole="LopHocPhan" />
+        </EntityType>
+        <EntityType Name="LopHocPhan">
+          <Key>
+            <PropertyRef Name="MaLopHocPhan" />
+          </Key>
+          <Property Name="MaLopHocPhan" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenLopHoc" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaMon" Type="Int32" Nullable="false" />
+          <Property Name="PhongHoc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HocKy" Type="Int32" Nullable="false" />
+          <Property Name="MaGV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Thu" Type="Int32" Nullable="false" />
+          <Property Name="NgayBD" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NgayKT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TietBD" Type="Int32" Nullable="false" />
+          <Property Name="TietKT" Type="Int32" Nullable="false" />
+          <Property Name="LoaiLop" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GiangVien" Relationship="Self.FK_LopHocPhan_GiangVien" FromRole="LopHocPhan" ToRole="GiangVien" />
+          <NavigationProperty Name="MonHoc" Relationship="Self.FK_LopHocPhan_MonHoc1" FromRole="LopHocPhan" ToRole="MonHoc" />
+          <NavigationProperty Name="SinhViens" Relationship="Self.SV_LopHocPhan" FromRole="LopHocPhan" ToRole="SinhVien" />
+        </EntityType>
+        <EntityType Name="MonHoc">
+          <Key>
+            <PropertyRef Name="MaMon" />
+          </Key>
+          <Property Name="MaMon" Type="Int32" Nullable="false" />
+          <Property Name="TenMon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TC" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DiemSVs" Relationship="Self.FK_DiemSV_MonHoc" FromRole="MonHoc" ToRole="DiemSV" />
+          <NavigationProperty Name="LopHocPhans" Relationship="Self.FK_LopHocPhan_MonHoc1" FromRole="MonHoc" ToRole="LopHocPhan" />
+        </EntityType>
+        <EntityType Name="SinhVien">
+          <Key>
+            <PropertyRef Name="MaSV" />
+          </Key>
+          <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="HoTenSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lop" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayNhapHoc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GioiTinh" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="DiemSVs" Relationship="Self.FK_DiemSV_SinhVien" FromRole="SinhVien" ToRole="DiemSV" />
+          <NavigationProperty Name="LopHocPhans" Relationship="Self.SV_LopHocPhan" FromRole="SinhVien" ToRole="LopHocPhan" />
+        </EntityType>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="TaiKhoan1" />
+          </Key>
+          <Property Name="TaiKhoan1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MatKhau" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vDiem">
+          <Key>
+            <PropertyRef Name="MaSV" />
+            <PropertyRef Name="MaMon" />
+          </Key>
+          <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="HoTenSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaMon" Type="Int32" Nullable="false" />
+          <Property Name="TenMon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DiemTK" Type="Double" />
+          <Property Name="DiemGK" Type="Double" />
+          <Property Name="DiemCK" Type="Double" />
+          <Property Name="DiemTB" Type="Double" />
+          <Property Name="DiemHe4" Type="Double" />
+          <Property Name="DiemChuHe4" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vDiemTheoMon">
+          <Key>
+            <PropertyRef Name="MaMon" />
+            <PropertyRef Name="TenMon" />
+          </Key>
+          <Property Name="MaMon" Type="Int32" Nullable="false" />
+          <Property Name="TenMon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiemTK" Type="Double" />
+          <Property Name="DiemGK" Type="Double" />
+          <Property Name="DiemCK" Type="Double" />
+          <Property Name="DiemTB" Type="Double" />
+          <Property Name="DiemHe4" Type="Double" />
+        </EntityType>
+        <EntityType Name="vDiemTheoSV">
+          <Key>
+            <PropertyRef Name="MaSV" />
+            <PropertyRef Name="HoTenSV" />
+          </Key>
+          <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="HoTenSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DiemTK" Type="Double" />
+          <Property Name="DiemGK" Type="Double" />
+          <Property Name="DiemCK" Type="Double" />
+          <Property Name="DiemTB" Type="Double" />
+          <Property Name="DiemHe4" Type="Double" />
+        </EntityType>
+        <EntityType Name="vLopHocPhan">
+          <Key>
+            <PropertyRef Name="MaLopHocPhan" />
+            <PropertyRef Name="TenLopHoc" />
+            <PropertyRef Name="TenMon" />
+            <PropertyRef Name="PhongHoc" />
+            <PropertyRef Name="HocKy" />
+            <PropertyRef Name="TenGV" />
+            <PropertyRef Name="Thu" />
+            <PropertyRef Name="NgayBD" />
+            <PropertyRef Name="NgayKT" />
+            <PropertyRef Name="TietBD" />
+            <PropertyRef Name="TietKT" />
+            <PropertyRef Name="LoaiLop" />
+          </Key>
+          <Property Name="MaLopHocPhan" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenLopHoc" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenMon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhongHoc" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="HocKy" Type="Int32" Nullable="false" />
+          <Property Name="TenGV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Thu" Type="Int32" Nullable="false" />
+          <Property Name="NgayBD" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NgayKT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TietBD" Type="Int32" Nullable="false" />
+          <Property Name="TietKT" Type="Int32" Nullable="false" />
+          <Property Name="LoaiLop" Type="String" MaxLength="9" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vSinhVien">
+          <Key>
+            <PropertyRef Name="MaSV" />
+            <PropertyRef Name="HoTenSV" />
+            <PropertyRef Name="Lop" />
+            <PropertyRef Name="NgaySinh" />
+            <PropertyRef Name="DiaChi" />
+            <PropertyRef Name="NgayNhapHoc" />
+            <PropertyRef Name="GioiTinh" />
+          </Key>
+          <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="HoTenSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lop" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayNhapHoc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GioiTinh" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_DiemSV_MonHoc">
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="1" />
+          <End Role="DiemSV" Type="Self.DiemSV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="MaMon" />
+            </Principal>
+            <Dependent Role="DiemSV">
+              <PropertyRef Name="MaMon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiemSV_SinhVien">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="1" />
+          <End Role="DiemSV" Type="Self.DiemSV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="MaSV" />
+            </Principal>
+            <Dependent Role="DiemSV">
+              <PropertyRef Name="MaSV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LopHocPhan_GiangVien">
+          <End Role="GiangVien" Type="Self.GiangVien" Multiplicity="0..1" />
+          <End Role="LopHocPhan" Type="Self.LopHocPhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GiangVien">
+              <PropertyRef Name="MaGV" />
+            </Principal>
+            <Dependent Role="LopHocPhan">
+              <PropertyRef Name="MaGV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LopHocPhan_MonHoc1">
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="1" />
+          <End Role="LopHocPhan" Type="Self.LopHocPhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MonHoc">
+              <PropertyRef Name="MaMon" />
+            </Principal>
+            <Dependent Role="LopHocPhan">
+              <PropertyRef Name="MaMon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SV_LopHocPhan">
+          <End Role="LopHocPhan" Type="Self.LopHocPhan" Multiplicity="*" />
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="QLSinhVienEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DiemSVs" EntityType="Self.DiemSV" />
+          <EntitySet Name="GiangViens" EntityType="Self.GiangVien" />
+          <EntitySet Name="LopHocPhans" EntityType="Self.LopHocPhan" />
+          <EntitySet Name="MonHocs" EntityType="Self.MonHoc" />
+          <EntitySet Name="SinhViens" EntityType="Self.SinhVien" />
+          <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
+          <EntitySet Name="vDiems" EntityType="Self.vDiem" />
+          <EntitySet Name="vDiemTheoMons" EntityType="Self.vDiemTheoMon" />
+          <EntitySet Name="vDiemTheoSVs" EntityType="Self.vDiemTheoSV" />
+          <EntitySet Name="vLopHocPhans" EntityType="Self.vLopHocPhan" />
+          <EntitySet Name="vSinhViens" EntityType="Self.vSinhVien" />
+          <AssociationSet Name="FK_DiemSV_MonHoc" Association="Self.FK_DiemSV_MonHoc">
+            <End Role="MonHoc" EntitySet="MonHocs" />
+            <End Role="DiemSV" EntitySet="DiemSVs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiemSV_SinhVien" Association="Self.FK_DiemSV_SinhVien">
+            <End Role="SinhVien" EntitySet="SinhViens" />
+            <End Role="DiemSV" EntitySet="DiemSVs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LopHocPhan_GiangVien" Association="Self.FK_LopHocPhan_GiangVien">
+            <End Role="GiangVien" EntitySet="GiangViens" />
+            <End Role="LopHocPhan" EntitySet="LopHocPhans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LopHocPhan_MonHoc1" Association="Self.FK_LopHocPhan_MonHoc1">
+            <End Role="MonHoc" EntitySet="MonHocs" />
+            <End Role="LopHocPhan" EntitySet="LopHocPhans" />
+          </AssociationSet>
+          <AssociationSet Name="SV_LopHocPhan" Association="Self.SV_LopHocPhan">
+            <End Role="LopHocPhan" EntitySet="LopHocPhans" />
+            <End Role="SinhVien" EntitySet="SinhViens" />
+          </AssociationSet>
+          <FunctionImport Name="p_DauRot" ReturnType="Collection(QLSinhVienModel.p_DauRot_Result)" />
+          <FunctionImport Name="p_findGiangVien" ReturnType="Collection(QLSinhVienModel.p_findGiangVien_Result)">
+            <Parameter Name="find" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="p_findSinhVien" ReturnType="Collection(QLSinhVienModel.p_findSinhVien_Result)">
+            <Parameter Name="find" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="p_findTheoKhoa" ReturnType="Collection(QLSinhVienModel.p_findTheoKhoa_Result)">
+            <Parameter Name="khoa" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="p_ktGVTrungLich" ReturnType="Collection(Int32)">
+            <Parameter Name="thu" Mode="In" Type="Int32" />
+            <Parameter Name="ngayBD" Mode="In" Type="DateTime" />
+            <Parameter Name="ngayKT" Mode="In" Type="DateTime" />
+            <Parameter Name="tietBD" Mode="In" Type="Int32" />
+            <Parameter Name="tietKT" Mode="In" Type="Int32" />
+            <Parameter Name="MaGV" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="p_ktPHTrungLich" ReturnType="Collection(Int32)">
+            <Parameter Name="thu" Mode="In" Type="Int32" />
+            <Parameter Name="ngayBD" Mode="In" Type="DateTime" />
+            <Parameter Name="ngayKT" Mode="In" Type="DateTime" />
+            <Parameter Name="tietBD" Mode="In" Type="Int32" />
+            <Parameter Name="tietKT" Mode="In" Type="Int32" />
+            <Parameter Name="Phong" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="p_svLopHocPhan" ReturnType="Collection(QLSinhVienModel.p_svLopHocPhan_Result)">
+            <Parameter Name="MaLopHP" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="p_DauRot_Result">
+          <Property Type="Int32" Name="tongSo" Nullable="true" />
+          <Property Type="Int32" Name="soLuongDau" Nullable="true" />
+          <Property Type="Int32" Name="tyLe" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="p_findGiangVien_Result">
+          <Property Type="String" Name="MaGV" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="TenGV" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SDT" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DiaChi" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="p_findSinhVien_Result">
+          <Property Type="String" Name="MaSV" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="HoTenSV" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Lop" Nullable="false" MaxLength="7" />
+          <Property Type="DateTime" Name="NgaySinh" Nullable="false" Precision="23" />
+          <Property Type="String" Name="SDT" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DiaChi" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="NgayNhapHoc" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="GioiTinh" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="p_findTheoKhoa_Result">
+          <Property Type="String" Name="MaSV" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="HoTenSV" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Lop" Nullable="false" MaxLength="7" />
+          <Property Type="DateTime" Name="NgaySinh" Nullable="false" Precision="23" />
+          <Property Type="String" Name="SDT" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DiaChi" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="NgayNhapHoc" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="GioiTinh" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="p_svLopHocPhan_Result">
+          <Property Type="String" Name="MaSV" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="HoTenSV" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Lop" Nullable="false" MaxLength="7" />
+          <Property Type="DateTime" Name="NgaySinh" Nullable="false" Precision="23" />
+          <Property Type="String" Name="SDT" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DiaChi" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="NgayNhapHoc" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="GioiTinh" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLSinhVienModelStoreContainer" CdmEntityContainer="QLSinhVienEntities">
+          <EntitySetMapping Name="DiemSVs">
+            <EntityTypeMapping TypeName="QLSinhVienModel.DiemSV">
+              <MappingFragment StoreEntitySet="DiemSV">
+                <ScalarProperty Name="MaMon" ColumnName="MaMon" />
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="DiemTK" ColumnName="DiemTK" />
+                <ScalarProperty Name="DiemGK" ColumnName="DiemGK" />
+                <ScalarProperty Name="DiemCK" ColumnName="DiemCK" />
+                <ScalarProperty Name="DiemTB" ColumnName="DiemTB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GiangViens">
+            <EntityTypeMapping TypeName="QLSinhVienModel.GiangVien">
+              <MappingFragment StoreEntitySet="GiangVien">
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="TenGV" ColumnName="TenGV" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LopHocPhans">
+            <EntityTypeMapping TypeName="QLSinhVienModel.LopHocPhan">
+              <MappingFragment StoreEntitySet="LopHocPhan">
+                <ScalarProperty Name="MaLopHocPhan" ColumnName="MaLopHocPhan" />
+                <ScalarProperty Name="TenLopHoc" ColumnName="TenLopHoc" />
+                <ScalarProperty Name="MaMon" ColumnName="MaMon" />
+                <ScalarProperty Name="PhongHoc" ColumnName="PhongHoc" />
+                <ScalarProperty Name="HocKy" ColumnName="HocKy" />
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="Thu" ColumnName="Thu" />
+                <ScalarProperty Name="NgayBD" ColumnName="NgayBD" />
+                <ScalarProperty Name="NgayKT" ColumnName="NgayKT" />
+                <ScalarProperty Name="TietBD" ColumnName="TietBD" />
+                <ScalarProperty Name="TietKT" ColumnName="TietKT" />
+                <ScalarProperty Name="LoaiLop" ColumnName="LoaiLop" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MonHocs">
+            <EntityTypeMapping TypeName="QLSinhVienModel.MonHoc">
+              <MappingFragment StoreEntitySet="MonHoc">
+                <ScalarProperty Name="MaMon" ColumnName="MaMon" />
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="TC" ColumnName="TC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SinhViens">
+            <EntityTypeMapping TypeName="QLSinhVienModel.SinhVien">
+              <MappingFragment StoreEntitySet="SinhVien">
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="HoTenSV" ColumnName="HoTenSV" />
+                <ScalarProperty Name="Lop" ColumnName="Lop" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="NgayNhapHoc" ColumnName="NgayNhapHoc" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaiKhoans">
+            <EntityTypeMapping TypeName="QLSinhVienModel.TaiKhoan">
+              <MappingFragment StoreEntitySet="TaiKhoan">
+                <ScalarProperty Name="TaiKhoan1" ColumnName="TaiKhoan" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vDiems">
+            <EntityTypeMapping TypeName="QLSinhVienModel.vDiem">
+              <MappingFragment StoreEntitySet="vDiem">
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="HoTenSV" ColumnName="HoTenSV" />
+                <ScalarProperty Name="MaMon" ColumnName="MaMon" />
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="DiemTK" ColumnName="DiemTK" />
+                <ScalarProperty Name="DiemGK" ColumnName="DiemGK" />
+                <ScalarProperty Name="DiemCK" ColumnName="DiemCK" />
+                <ScalarProperty Name="DiemTB" ColumnName="DiemTB" />
+                <ScalarProperty Name="DiemHe4" ColumnName="DiemHe4" />
+                <ScalarProperty Name="DiemChuHe4" ColumnName="DiemChuHe4" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vDiemTheoMons">
+            <EntityTypeMapping TypeName="QLSinhVienModel.vDiemTheoMon">
+              <MappingFragment StoreEntitySet="vDiemTheoMon">
+                <ScalarProperty Name="MaMon" ColumnName="MaMon" />
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="DiemTK" ColumnName="DiemTK" />
+                <ScalarProperty Name="DiemGK" ColumnName="DiemGK" />
+                <ScalarProperty Name="DiemCK" ColumnName="DiemCK" />
+                <ScalarProperty Name="DiemTB" ColumnName="DiemTB" />
+                <ScalarProperty Name="DiemHe4" ColumnName="DiemHe4" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vDiemTheoSVs">
+            <EntityTypeMapping TypeName="QLSinhVienModel.vDiemTheoSV">
+              <MappingFragment StoreEntitySet="vDiemTheoSV">
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="HoTenSV" ColumnName="HoTenSV" />
+                <ScalarProperty Name="DiemTK" ColumnName="DiemTK" />
+                <ScalarProperty Name="DiemGK" ColumnName="DiemGK" />
+                <ScalarProperty Name="DiemCK" ColumnName="DiemCK" />
+                <ScalarProperty Name="DiemTB" ColumnName="DiemTB" />
+                <ScalarProperty Name="DiemHe4" ColumnName="DiemHe4" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vLopHocPhans">
+            <EntityTypeMapping TypeName="QLSinhVienModel.vLopHocPhan">
+              <MappingFragment StoreEntitySet="vLopHocPhan">
+                <ScalarProperty Name="MaLopHocPhan" ColumnName="MaLopHocPhan" />
+                <ScalarProperty Name="TenLopHoc" ColumnName="TenLopHoc" />
+                <ScalarProperty Name="TenMon" ColumnName="TenMon" />
+                <ScalarProperty Name="PhongHoc" ColumnName="PhongHoc" />
+                <ScalarProperty Name="HocKy" ColumnName="HocKy" />
+                <ScalarProperty Name="TenGV" ColumnName="TenGV" />
+                <ScalarProperty Name="Thu" ColumnName="Thu" />
+                <ScalarProperty Name="NgayBD" ColumnName="NgayBD" />
+                <ScalarProperty Name="NgayKT" ColumnName="NgayKT" />
+                <ScalarProperty Name="TietBD" ColumnName="TietBD" />
+                <ScalarProperty Name="TietKT" ColumnName="TietKT" />
+                <ScalarProperty Name="LoaiLop" ColumnName="LoaiLop" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vSinhViens">
+            <EntityTypeMapping TypeName="QLSinhVienModel.vSinhVien">
+              <MappingFragment StoreEntitySet="vSinhVien">
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="HoTenSV" ColumnName="HoTenSV" />
+                <ScalarProperty Name="Lop" ColumnName="Lop" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="NgayNhapHoc" ColumnName="NgayNhapHoc" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="SV_LopHocPhan" TypeName="QLSinhVienModel.SV_LopHocPhan" StoreEntitySet="SV_LopHocPhan">
+            <EndProperty Name="LopHocPhan">
+              <ScalarProperty Name="MaLopHocPhan" ColumnName="MaLopHocPhan" />
+            </EndProperty>
+            <EndProperty Name="SinhVien">
+              <ScalarProperty Name="MaSV" ColumnName="MaSv" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="p_DauRot" FunctionName="QLSinhVienModel.Store.p_DauRot">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLSinhVienModel.p_DauRot_Result">
+                <ScalarProperty Name="tongSo" ColumnName="tongSo" />
+                <ScalarProperty Name="soLuongDau" ColumnName="soLuongDau" />
+                <ScalarProperty Name="tyLe" ColumnName="tyLe" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="p_findGiangVien" FunctionName="QLSinhVienModel.Store.p_findGiangVien">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLSinhVienModel.p_findGiangVien_Result">
+                <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+                <ScalarProperty Name="TenGV" ColumnName="TenGV" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="p_findSinhVien" FunctionName="QLSinhVienModel.Store.p_findSinhVien">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLSinhVienModel.p_findSinhVien_Result">
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="HoTenSV" ColumnName="HoTenSV" />
+                <ScalarProperty Name="Lop" ColumnName="Lop" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="NgayNhapHoc" ColumnName="NgayNhapHoc" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="p_findTheoKhoa" FunctionName="QLSinhVienModel.Store.p_findTheoKhoa">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLSinhVienModel.p_findTheoKhoa_Result">
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="HoTenSV" ColumnName="HoTenSV" />
+                <ScalarProperty Name="Lop" ColumnName="Lop" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="NgayNhapHoc" ColumnName="NgayNhapHoc" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="p_ktGVTrungLich" FunctionName="QLSinhVienModel.Store.p_ktGVTrungLich" />
+          <FunctionImportMapping FunctionImportName="p_ktPHTrungLich" FunctionName="QLSinhVienModel.Store.p_ktPHTrungLich" />
+          <FunctionImportMapping FunctionImportName="p_svLopHocPhan" FunctionName="QLSinhVienModel.Store.p_svLopHocPhan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLSinhVienModel.p_svLopHocPhan_Result">
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="HoTenSV" ColumnName="HoTenSV" />
+                <ScalarProperty Name="Lop" ColumnName="Lop" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="NgayNhapHoc" ColumnName="NgayNhapHoc" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLSinhVien", "QLSinhVien\QLSinhVien.csproj", "{AD544A5E-F5BB-42D1-9263-C98B2B588434}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "QL_SinhVien", "QL_SinhVien\QL_SinhVien.vdproj", "{D2E53295-27C4-4DC5-AAD3-3C0FE888500D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD544A5E-F5BB-42D1-9263-C98B2B588434}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD544A5E-F5BB-42D1-9263-C98B2B588434}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD544A5E-F5BB-42D1-9263-C98B2B588434}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD544A5E-F5BB-42D1-9263-C98B2B588434}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2E53295-27C4-4DC5-AAD3-3C0FE888500D}.Debug|Any CPU.ActiveCfg = Debug
+		{D2E53295-27C4-4DC5-AAD3-3C0FE888500D}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {70AC49EB-52C2-4A05-97E3-FDE1FD6669B6}
+	EndGlobalSection
+EndGlobal
